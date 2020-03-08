@@ -78,11 +78,23 @@ function purchaseItem(department){
     inquirer.prompt([{
         name: "id",
         type: "input",
-        message: "Select an item by its ID to purchase."
+        message: "Select an item by its ID to purchase.",
+        validate: function(value) {
+            if (isNaN(value) === false) {
+              return true;
+            }
+            return false;
+        }
     }, {
         name: "quantity",
         type: "input",
-        message: "How many would you like today?"
+        message: "How many would you like today?",
+        validate: function(value) {
+            if (isNaN(value) === false) {
+              return true;
+            }
+            return false;
+        }
     }]).then(function(answer){
         //Grab price to display to user how much they have spent.
         //Grab stock to check against requested quantity.

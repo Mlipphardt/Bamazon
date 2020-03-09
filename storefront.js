@@ -14,19 +14,22 @@ connection.connect(function(err) {
     storeWelcome();
   });
   
+//Initialize welcome message and menu
 function storeWelcome(){
     inquirer.prompt({
         name: "department",
         type: "list",
         message: "Welcome! What would you like to browse today?",
-        choices: ["grocery", "pharmacy", "Exit Bamazon"]
+        choices: ["grocery", "pharmacy", "electronics", "apparel", "exit Bamazon"]
     }).then(function(answer){
         switch (answer.department){
             case "grocery":
             case "pharmacy":
+            case "apparel":
+            case "electronics":
                 chooseAction(answer.department);
                 break;
-            case "Exit Bamazon":
+            case "exit Bamazon":
                 console.log("Thanks for visiting Bamazon!");
                 connection.end();
         }
@@ -51,13 +54,14 @@ function chooseAction(department){
     })
 }
 
+//Displays information from inventory
 function readInventory(department){
     var query = "SELECT * FROM " + department;
       connection.query(query, function(err, res) {
         if (err) throw err;
         for (var i = 0; i < res.length; i++) {
             console.log(
-              "ID: " +
+                "ID: " +
                 res[i].id +
                 " || Item: " +
                 res[i].item +
@@ -119,7 +123,7 @@ function purchaseItem(department){
 }
 
 function orderSuccess(department, total, itemID, Quantity){
-    let query = "UPDATE " + department +  " SET stock=stock-" + Quantity + " WHERE ?"
+    let query = "UPDATE " + department +  " SET stock=stock-" + Quantity + ",sold=sold+" + Quantity + " WHERE ?"
     connection.query(query, {id: itemID}, function(err, res){
         if (err) throw err;
         console.log("Payment received in the amount of $" + total + "!")

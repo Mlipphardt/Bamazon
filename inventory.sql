@@ -79,11 +79,3 @@ VALUES ("suit", 200.00, 5, "Proper business attire", 0);
 
 INSERT INTO apparel (item, price, stock, description, sold)
 VALUES ("jacket", 25.00, 20, "Warm winter-wear", 0);
-
-SELECT * 
-FROM grocery,pharmacy
-WHERE grocery.id = pharmacy.id;
-SELECT * FROM grocery;
-SELECT * FROM electronics;
-SELECT * FROM grocery,pharmacy WHERE grocery.id = pharmacy.id;
-SELECT * FROM grocery JOIN pharmacy ON grocery.id = pharmacy.id;

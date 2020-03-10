@@ -6,7 +6,7 @@ Through storefront.js, Bamazon allows users to view inventory from an SQL databa
 
 Through bamazonstaff.js, Bamazon allows management to view inventory, restock items, or stock new items.  
 
-In order to ready liri for us, complete the following steps: 
+In order to ready Bamazon for use, complete the following steps: 
 1. Download this package from https://github.com/Mlipphardt/Bamazon
 2. Navigate to the downloaded folder.
 3. If Node.js has not been installed, download and install it from 
@@ -15,38 +15,36 @@ In order to ready liri for us, complete the following steps:
 4. To run Bamazon, customer version, input the following in the command line:
     node storefront.js
 
+5. Once open, the user will be provided a menu to select which department they would like to browse.
+
+[Storefront main menu.](./demo-images/storefront-opening.png)
+
+6. Next, a user may select to either browse the inventory, or purchase an item.
+
+[List of possible actions](./demo-images/storefront-actions.png)
+
+7. If the user elects to browse the inventory, it will be displayed.
+
+[Example of inventory view.](./demo-images/storefront-inventory-demo.png)
+
+8. If the user chooses to purchase an item, they will be given the total cost and the database will be updated.
+
+[Example of purchase request.](./demo-images/storefront-purchase-demo.png)
+
+8a. If the user attempts to order more than is stocked, they will be notified and the request will not complete.
+
+[Example of attempted over-purchase.](./demo-images/overpurchase-demo.png)
 
 
-4a)Liri offers the following four options:
-1. spotify-this-song - Search for a song on Spotify and receive information.
 
-[Example of spotify-this-song in action.](./demo-images/spotify-this-song-preview.png)
-
-2. movie-this - Search for a movie on OMDB and receive information.
-
-[Example of movie-this in action.](./demo-images/movie-this-preview.png)
-
-2a. If no query is provided for movie-this, the app will default to searching for the movie "Mr. Nobody."
-
-[Example of movie-this default in action.](./demo-images/movie-this-default-preview.png)
-
-
-3. concert-this - Search for an artist and receive concert scheduling data from 
-   the Bands in Town API.
-
-[Example of concert-this in action.](./demo-images/concert-this-preview.png)
-
-4. do-what-it-says - Searches for "I want it that way" in Spotify.
-
-[Example of do-what-it-says in action.](./demo-images/do-what-it-says-preview.png)
 
 Technologies used in this project:
 
 - Node.js was used to create the command line interface.
 
-- APIs from Bands-in-Town, OMDB, and Spotify to provide the information for the features.
+- MySQL was used to create the Bamazon database and queries.
 
-- NPM package "Axios" was used to access the Bands-in-Town and OMDB APIs.
+- NPM package "mysql" was used to utilize MySQL databases and queries in node.js.
 
-- NPM package "moment" to convert times received by the API.
+- NPM package "inquirer" used to provide a user interface and obtain user input.
 
